@@ -1,0 +1,20 @@
+@use 'styles/colors' as *;
+
+:root {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+section.content-gasto {
+  padding: 8px 16px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
