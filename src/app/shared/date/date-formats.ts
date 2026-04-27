@@ -1,13 +1,11 @@
 import { MatDateFormats } from '@angular/material/core';
 
-export const BR_DATE_FORMATS: MatDateFormats = {
-  parse: {
-    dateInput: 'dd/MM/yyyy',
-  },
+export const MY_DATE_FORMATS: MatDateFormats = {
+  parse: { dateInput: 'DD/MM/YYYY' },
   display: {
-    dateInput: 'dd/MM/yyyy',
-    monthYearLabel: 'MMM yyyy',
-    dateA11yLabel: 'dd/MM/yyyy',
-    monthYearA11yLabel: 'MMMM yyyy',
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MMMM YYYY',
   },
 };

@@ -1,20 +1,22 @@
+import { DateMaskDirective } from '@/app/shared/directives/date.directive';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgxMaskDirective } from 'ngx-mask';
-import { GastosService } from '../../../../core/service/gastos.service';
-import { Gasto } from '../../../../core/interface/gasto.interface';
-import { DateFilterFn, MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { NgxMaskDirective } from 'ngx-mask';
+import { Gasto } from '@/app/core/interface/gasto.interface';
+import { GastosService } from '@/app/core/service/gastos.service';
+import { format } from 'date-fns';
+
 @Component({
   selector: 'app-gastos',
   imports: [
@@ -22,11 +24,11 @@ import {
     NgxMaskDirective,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
+    DateMaskDirective,
   ],
   templateUrl: './gastos.html',
   styleUrl: './gastos.scss',
@@ -69,6 +71,7 @@ export class GastosComponent implements OnInit {
 
   onSubmit() {
     const form = this.form;
+    console.log(typeof form.value.data, form.value.data);
     if (form.invalid) {
       this.openSnackBar('Preencha todos os campos obrigatórios!');
       return;
@@ -77,7 +80,7 @@ export class GastosComponent implements OnInit {
       const gasto: Gasto = {
         ...(this.form.value as any),
         valor: String(form.value.valor ?? ''),
-        data: form.value.data || null,
+        data: form.value.data ? format(new Date(form.value.data as any), 'dd/MM/yyyy') : null,
       };
 
       this.gastosService.setGastos(gasto).subscribe({
