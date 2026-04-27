@@ -1,0 +1,44 @@
+<section class="content-gasto">
+  <header>
+    <div>
+      <h1>Adicionar Gasto</h1>
+      <p>Registre um novo gasto</p>
+    </div>
+  </header>
+  <form [formGroup]="form" class="content-form-gastos">
+    <section>
+      <mat-form-field>
+        <mat-label for="valor">Valor</mat-label>
+        <input type="string" id="valor" formControlName="valor" mask="separator.2" thousandSeparator="."
+          decimalMarker="," prefix="R$ " placeholder="R$ 0,00" matInput>
+      </mat-form-field>
+
+    </section>
+    <section>
+      <mat-form-field>
+        <mat-label for="categoria">Categoria</mat-label>
+        <mat-select id="categoria" formControlName="categoria">
+          <mat-option value="alimentacao">Alimentação</mat-option>
+          <mat-option value="transporte">Transporte</mat-option>
+          <mat-option value="saude">Saúde</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field>
+        <mat-label for="descricao">Descrição</mat-label>
+        <textarea matInput type="text" id="descricao" formControlName="descricao"></textarea>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field>
+        <mat-label for="data">Data</mat-label>
+        <input matInput mask="00/00/0000" [dropSpecialCharacters]="false" [matDatepicker]="picker" [max]="maxDate" />
+        <mat-hint>DD/MM/AAAA</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </section>
+    <button type="submit" matButton="filled" (click)="onSubmit()">+ Adicionar gasto</button>
+  </form>
+</section>
