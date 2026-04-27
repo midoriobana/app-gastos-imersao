@@ -1,29 +1,26 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideNgxMask } from 'ngx-mask';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
 import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-  provideNativeDateAdapter,
-} from '@angular/material/core';
-import { BrDateAdapter } from '@/app/shared/date/br-date-adapter';
-import { BR_DATE_FORMATS } from '@/app/shared/date/date-formats';
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
+import { routes } from './app.routes';
+import { MY_DATE_FORMATS } from '@/app/shared/date/date-formats';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
+    provideAnimationsAsync(),
     provideNgxMask(),
     provideHttpClient(withFetch()),
-    provideNativeDateAdapter(),
-    { provide: DateAdapter, useClass: BrDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: BR_DATE_FORMATS },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
   ],
 };
