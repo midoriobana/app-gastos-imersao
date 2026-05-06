@@ -12,4 +12,17 @@
   --pink-light: #E3B1C2;
   --pink-base: #CE6387;
   --pink-dark: #C93A6B;
+
+  --mat-sys-primary: var(--pink-dark);
+  --mat-sys-on-primary: var(--white);
+  --mat-sys-primary-container: var(--pink-light);
+  --mat-sys-on-primary-container: var(--pink-dark);
+
+  --mat-sys-secondary: var(--pink-base);
+  --mat-sys-on-secondary: var(--white);
+  --mat-sys-secondary-container: var(--pink-light);
+  --mat-sys-on-secondary-container: var(--pink-dark);
+
+  --mat-sys-surface: var(--gray-100);
+  --mat-sys-on-surface: var(--gray-400);
 }

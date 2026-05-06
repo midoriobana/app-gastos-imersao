@@ -1,2 +1,71 @@
 @use 'colors';
-@use 'typography' as *;
+@use 'typography';
+@use 'variables' as v;
+
+// ─── Tokens dos componentes ───────────────────────────────
+:root {
+  // Input
+  --input-font-family:    var(--font-body);
+  --input-font-size:      24px;
+  --input-font-weight:    400;
+  --input-line-height:    1.4;
+  --input-color:          var(--gray-400);
+  --input-border:         1px solid var(--gray-400);
+
+  // Button
+  --btn-font-family:      var(--font-body);
+  --btn-font-size:        24px;
+  --btn-font-weight:      700;
+  --btn-line-height:      1.4;
+  --btn-letter-spacing:   0px;
+}
+
+// ─── Input ────────────────────────────────────────────────
+input {
+  font-family:    var(--input-font-family);
+  font-size:      var(--input-font-size);
+  font-weight:    var(--input-font-weight);
+  line-height:    var(--input-line-height);
+  letter-spacing: 0;
+  color:          var(--input-color);
+  border:         var(--input-border);
+  border-radius:  v.$radius-md;
+  padding:        v.$spacing-sm v.$spacing-md;
+  width:          100%;
+  outline:        none;
+  transition:     border-color v.$transition-fast;
+
+  &:focus {
+    border-color: var(--pink-base);
+  }
+}
+
+// ─── Button primary ───────────────────────────────────────
+%btn-base {
+  font-family:     var(--btn-font-family);
+  font-size:       var(--btn-font-size);
+  font-weight:     var(--btn-font-weight);
+  line-height:     var(--btn-line-height);
+  letter-spacing:  var(--btn-letter-spacing);
+  text-align:      center;
+  border:          none;
+  border-radius:   v.$radius-full;
+  padding:         v.$spacing-sm v.$spacing-xl;
+  cursor:          pointer;
+  transition:      background-color v.$transition-fast;
+  color:           var(--white);
+}
+
+.btn-primary {
+  @extend %btn-base;
+  background-color: var(--pink-dark);
+
+  &:hover:not(:disabled) {
+    background-color: var(--pink-base);
+  }
+
+  &:disabled {
+    background-color: var(--pink-light);
+    cursor:           not-allowed;
+  }
+}

@@ -45,7 +45,7 @@ export class GastosComponent implements OnInit {
   constructor(private gastosService: GastosService) {}
   form = new FormGroup({
     valor: new FormControl('', [Validators.required]),
-    descricao: new FormControl('', [Validators.required]),
+    descricao: new FormControl(''),
     categoria: new FormControl('', [Validators.required]),
     data: new FormControl<Date | null>(null, [Validators.required]),
   });
