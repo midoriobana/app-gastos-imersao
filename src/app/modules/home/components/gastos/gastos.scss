@@ -1,9 +1,17 @@
-@use 'styles/colors' as *;
+@use '../../../../../styles/colors' as *;
 
 :root {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+h1 {
+  font-family: var(--font-heading);
+}
+
+p {
+  font-family: var(--font-body);
 }
 
 section.content-gasto {

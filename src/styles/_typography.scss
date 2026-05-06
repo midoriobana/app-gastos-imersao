@@ -1,3 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
 
-$font-roboto: 'Roboto', sans-serif;
+$font-heading: 'Cairo', sans-serif;
+$font-body: 'Plus Jakarta Sans', sans-serif;
+$font-ui: 'Plus Jakarta Sans', sans-serif;
+
+:root {
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --font-ui: #{$font-ui};
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--pink-dark);
+  vertical-align: middle;
+  margin: 0;
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--gray-300);
+  vertical-align: middle;
+  margin: 0;
+}
+
+label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--gray-400);
+  vertical-align: middle;
+}
